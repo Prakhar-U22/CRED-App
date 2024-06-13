@@ -33,7 +33,7 @@ export default function Create() {
         setAge("");
         setTimeout(() => {
           navigate('/allpost');
-        }, 1000); // Wait for 1 seconds before navigating to home
+        }, 1000); // Wait for 1 second before navigating to /allpost
       } else {
         console.log(json);
         setError("Failed to add user. Please try again later.");
@@ -47,44 +47,50 @@ export default function Create() {
   };
 
   return (
-    <div className='container m-5 bg-white p-4 rounded'>
+    <div className='container my-5'>
       {success && <div className="alert alert-success">{success}</div>}
       {error && <div className="alert alert-danger">{error}</div>}
-      <div className="d-flex justify-content-center align-items-center">
-        <h4>Enter Data here<hr/></h4>
+      <div className="d-flex justify-content-center align-items-center mb-4">
+        <h4 className='text-white'>Enter Data here<hr /></h4>
+        
       </div>
-      <form className='container' onSubmit={handleOnClick}>
+      <form onSubmit={handleOnClick} className='bg-white p-4 rounded shadow'>
         <div className="mb-3">
-          <label htmlFor="exampleInputName1" className="form-label">Name</label>
+          <label htmlFor="name" className="form-label">Name</label>
           <input
             type="text"
             className="form-control"
-            id="exampleInputName1"
+            id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
+          <label htmlFor="email" className="form-label">Email</label>
           <input
             type="email"
             className="form-control"
-            id="exampleInputEmail1"
+            id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputAge1" className="form-label">Age</label>
+          <label htmlFor="age" className="form-label">Age</label>
           <input
             type="number"
             className="form-control"
-            id="exampleInputAge1"
+            id="age"
             value={age}
             onChange={(e) => setAge(e.target.value)}
+            required
           />
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <div className="d-flex justify-content-center">
+          <button type="submit" className="btn btn-primary">Submit</button>
+        </div>
       </form>
     </div>
   );

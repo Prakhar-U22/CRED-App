@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 export default function Update() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [age, setAge] = useState(""); 
+  const [age, setAge] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
@@ -35,9 +35,10 @@ export default function Update() {
     }
   };
 
+  // eslint-disable-next-line
   useEffect(() => {
     getSingleUserData();
-  }, []); 
+  }, []);
 
   const handleEdit = async (e) => {
     e.preventDefault();
@@ -66,14 +67,14 @@ export default function Update() {
   };
 
   return (
-    <div className='container m-5 bg-white p-4 rounded'>
-      {loading && <div>Loading...</div>}
+    <div className='container my-5'>
+      {loading && <div className="alert alert-info">Loading...</div>}
       {success && <div className="alert alert-success">{success}</div>}
       {error && <div className="alert alert-danger">{error}</div>}
       <div className="d-flex justify-content-center align-items-center">
-        <h4>Edit Data here<hr/></h4>
+        <h4 className='text-white'>Edit Data here<hr /></h4>
       </div>
-      <form className='container' onSubmit={handleEdit}>
+      <form className='container bg-white p-4 rounded' onSubmit={handleEdit}>
         <div className="mb-3">
           <label htmlFor="exampleInputName1" className="form-label">Name</label>
           <input
@@ -107,7 +108,7 @@ export default function Update() {
             onChange={(e) => setAge(e.target.value)}
           />
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary ">Submit</button>
       </form>
     </div>
   );

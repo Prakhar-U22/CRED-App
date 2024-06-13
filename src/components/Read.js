@@ -44,18 +44,20 @@ export default function Read() {
   }
 
   return (
-    <div className="container m-5">
+    <div className="container my-5">
       <div className="row">
         {data.map((ele) => (
-          <div className="col-12 col-sm-6 col-md-6 col-lg-4 mb-3" key={ele._id}>
-            <div className="card" style={{ width: '100%' }}>
-              <div className="card-body">
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-3" key={ele._id}>
+            <div className="card h-100">
+              <div className="card-body d-flex flex-column">
                 <h5 className="card-title">{ele.name}</h5>
                 <h6 className="card-subtitle mb-2 text-body-secondary"><b>Email</b> - {ele.email}</h6>
                 <h6 className="card-subtitle mb-2 text-body-secondary"><b>Age</b> - {ele.age}</h6>
-                <p className="card-text">Card's content.</p>
-                <Link to="#" className="card-link" onClick={() => handleDelete(ele._id)}>Delete</Link>
-                <Link to={`/${ele._id}`} className="card-link">Edit</Link>
+                <p className="card-text flex-grow-1">Card's content.</p>
+                <div className="mt-auto">
+                  <Link to="#" className="card-link" onClick={() => handleDelete(ele._id)}>Delete</Link>
+                  <Link to={`/${ele._id}`} className="card-link">Edit</Link>
+                </div>
               </div>
             </div>
           </div>

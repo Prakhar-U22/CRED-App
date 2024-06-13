@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 export default function Update() {
@@ -7,9 +7,11 @@ export default function Update() {
   const [age, setAge] = useState(""); 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
   const getSingleUserData = async () => {
+    setLoading(true);
     try {
       const response = await fetch(`https://cred-backend.onrender.com/${id}`, {
         method: 'GET',
@@ -28,12 +30,14 @@ export default function Update() {
       }
     } catch (error) {
       setError("Failed to fetch user data");
+    } finally {
+      setLoading(false);
     }
   };
 
-  // useEffect(() => {
+  useEffect(() => {
     getSingleUserData();
-  // }, []); 
+  }, []); 
 
   const handleEdit = async (e) => {
     e.preventDefault();
@@ -63,11 +67,11 @@ export default function Update() {
 
   return (
     <div className='container m-5 bg-white p-4 rounded'>
+      {loading && <div>Loading...</div>}
       {success && <div className="alert alert-success">{success}</div>}
       {error && <div className="alert alert-danger">{error}</div>}
       <div className="d-flex justify-content-center align-items-center">
         <h4>Edit Data here<hr/></h4>
-        
       </div>
       <form className='container' onSubmit={handleEdit}>
         <div className="mb-3">

@@ -6,7 +6,7 @@ export default function Read() {
 
   async function getData() {
     try {
-      let response = await fetch('http://localhost:5000', {
+      let response = await fetch('https://cred-backend.onrender.com', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ export default function Read() {
 
   const handleDelete = async (_id) => {
     try {
-      const response = await fetch(`http://localhost:5000/${_id}`, {
+      const response = await fetch(`https://cred-backend.onrender.com/${_id}`, {
         method: 'DELETE'
       });
       if (response.ok) {

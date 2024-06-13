@@ -15,7 +15,7 @@ export default function Create() {
     e.preventDefault();
     try {
       const addUser = { name, email, age };
-      const response = await fetch("http://localhost:5000/create", {
+      const response = await fetch("https://cred-backend.onrender.com/create", {
         method: "POST",
         body: JSON.stringify(addUser),
         headers: {

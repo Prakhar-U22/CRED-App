@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 export default function Update() {
@@ -11,7 +11,7 @@ export default function Update() {
 
   const getSingleUserData = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/${id}`, {
+      const response = await fetch(`https://cred-backend.onrender.com/${id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export default function Update() {
   const handleEdit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/${id}`, {
+      const response = await fetch(`https://cred-backend.onrender.com/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
